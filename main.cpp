@@ -4,13 +4,20 @@
 using namespace std;
 int main()
 {
-    std::cout<<"Assignment One Evaluation"<<std::endl;
+    cout<<"Assignment One Evaluation"<<endl;
+float x2,y2,z2,n2;
+char c;
+
+    cin>>x2>>y2>>z2>>n2>>c;
+    
 
     Vector3 vec1(1,2,3);
-    Vector3 vec2(3,4,5);
-    Vector3 Scalar_multiplication(vec1,5,'a')
-cout<<Scalar_multiplication.x <<Scalar_multiplication.y <<Scalar_multiplication.z <<endl;
-    std::cin.get();
-    Vector3()
+    Vector3 vec2(x2,y2,z2);
+    Vector3 v(vec1,vec2,n2,c);
+    if(c=='.'||c=='|')
+    cout<<v.x;
+    else
+    cout<<v.x<<" "<<v.y<<" "<<v.z;
+    
     return 0;
 }
