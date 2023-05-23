@@ -9,7 +9,7 @@ int main()
     float mul = 2;
     float div = 4;
     Vector3 dot(1,1,1);
-    Vector3 cross(1,1,-2);
+    Vector3 cross(3,6,9);
 
     std::cout<<"Assignment One Evaluation"<<std::endl;
 
@@ -17,27 +17,27 @@ int main()
     vec.print();
     //std::cin.get();
 
-    vec.length();
+    std::cout<<vec.length()<<std::endl;
 
-    vec = vec + add;
-    vec.print();
+    Vector3 vecA = vec + add;
+    vecA.print();
 
+    Vector3 vecS = vec - sub;
+    vecS.print();
+    
     std::cout<<vec * dot<<std::endl;
 
-    vec = vec - sub;
-    vec.print();
+    Vector3 vecM = vec * mul;
+    vecM.print();
 
-    vec = vec * mul;
-    vec.print();
+    Vector3 vecD = vec / div;
+    vecD.print();
 
-    vec = vec / div;
-    vec.print();
+    
+    std::cout<<vec.dot(dot)<<std::endl;
 
-    vec.dot(dot);
-    vec.print();
-
-    vec.cross(cross);
-    vec.print();
+    Vector3 vecC = vec.cross(cross);
+    vecC.print();
 
     return 0;
 }
