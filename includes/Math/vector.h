@@ -39,10 +39,8 @@ class Vector3
     }
 
     Vector3 operator*(float p){
-        this->x *= p;
-        this->y *= p;
-        this->z *= p;
-        return *this;
+        Vector3 ans(this->x * p, this->y * p, this->z * p);
+        return ans;
     }
     
     double operator*(Vector3 v){
@@ -54,10 +52,8 @@ class Vector3
     }
 
     Vector3 operator/(float p){
-        this->x /= p;
-        this->y /= p;
-        this->z /= p;
-        return *this;
+        Vector3 ans(this->x / p, this->y / p, this->z / p);
+        return ans;
     }
 
     double dot(Vector3 v){
