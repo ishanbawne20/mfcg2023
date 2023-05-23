@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 
-set( CMAKE_CXX_COMPILER "/pathto/g++" )
-set( CMAKE_C_COMPILER "/pathto/gcc" )
-
-
 project(mfcg)
 
 set(CMAKE_CXX_STANDARD 11)
