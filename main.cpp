@@ -3,11 +3,29 @@
 #include "vec3.h"
 
 #include <iostream>
+#include <cmath>
+
+using namespace std;
 
 color ray_color(const ray& r) {
-    vec3 unit_direction = unit_vector(r.direction());
-    auto t = 0.5*(unit_direction.y() + 1.0);
-    return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
+    //vec3 unit_direction = unit_vector(r.direction());
+    double c = 1.0;
+    
+    auto x = r.direction().x();
+    auto y = r.direction().y();
+    double m = y*y/(c + x*x);
+    m = pow(m, 0.45)*5;
+    int mint = int(m);
+
+    double mul;
+    if(mint % 2 == 0)
+        mul = m - mint;
+    else
+        mul = 1 - (m - mint);
+
+    color colour = color(mul, mul, mul);
+
+    return colour;
 }
 
 int main() {
