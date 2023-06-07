@@ -9,19 +9,17 @@ using namespace std;
 
 color ray_color(const ray& r) {
     //vec3 unit_direction = unit_vector(r.direction());
-    double c = 1.0;
-    
     auto x = r.direction().x();
     auto y = r.direction().y();
-    double m = y*y/(c + x*x);
-    m = pow(m, 0.4)*5;
-    int mint = int(m);
+    double rad = sqrt(x*x + y*y);
+    rad = pow(rad, 0.85)*4;
+    int rint = int(rad);
 
     double mul;
-    if(mint % 2 == 0)
-        mul = m - mint;
+    if(rint % 2 == 0)
+        mul = rad - rint;
     else
-        mul = 1 - (m - mint);
+        mul = 1 - (rad - rint);
 
     color colour = color(mul, mul, mul);
 
