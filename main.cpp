@@ -14,7 +14,7 @@ color ray_color(const ray& r) {
     auto x = r.direction().x();
     auto y = r.direction().y();
     double m = y*y/(c + x*x);
-    m = pow(m, 0.45)*5;
+    m = pow(m, 0.4)*5;
     int mint = int(m);
 
     double mul;
