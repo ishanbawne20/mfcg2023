@@ -1,13 +1,26 @@
 #include "color.h"
 #include "ray.h"
 #include "vec3.h"
+#include <fstream>
 
 #include <iostream>
 
 color ray_color(const ray& r) {
-    vec3 unit_direction = unit_vector(r.direction());
-    auto t = 0.5*(unit_direction.y() + 1.0);
-    return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
+    vec3 fp=vec3(0,0,-1);
+    vec3 rad= r.direction()-fp;
+    double radius=rad.length();
+    int k=3;
+    radius*=k;
+    int r1=static_cast<int>(radius);
+    double clr;
+    if(r1%2==0){
+        clr=radius-r1;
+    }
+    else{
+        clr=r1+1-radius;
+    }
+
+    return color(clr,clr,clr);
 }
 
 int main() {
