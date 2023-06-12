@@ -1,13 +1,16 @@
-#include "color.h"
-#include "ray.h"
-#include "vec3.h"
+#include "includes/color.h"
+#include "includes/ray.h"
+#include "includes/vec3.h"
 
 #include <iostream>
+#include <math.h>
 
 color ray_color(const ray& r) {
-    vec3 unit_direction = unit_vector(r.direction());
-    auto t = 0.5*(unit_direction.y() + 1.0);
-    return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
+    vec3 direction = unit_vector(r.direction());
+    double t = sqrt(direction.x()*direction.x())+(direction.y()*direction.y());
+    t = 2*sqrt(0.001*(1-t));
+    auto col = (sin(t-1.57)+1)*0.5*color(1.0, 1.0, 1.0);
+    return  col;
 }
 
 int main() {
