@@ -1,30 +1,30 @@
-# Assignment 2
-This assignment focuses on trying to make you sure you have understood the basics of rendering an image as we discussed in the session. The code written is pretty self explanatory and you should be able to understand even if you missed out on a few parts during the session.
+# Assignment 3
+Till now we have covered making spheres and donuts among the primitive shapes for our ray tracer. We have also covered different types of materials like glass, metals and diffuse materials.
 
-Running the project from current branch outputs a image file `image.ppm`. Your task is to madify the `main.cpp` file to generate a new image which looks something like the images given below. 
+Build and run the current project to check the output. It should look something like this : 
+![image.png](image.png)
 
-![hyp.png](/Images/hyp.png "image 1")
+Notice it does not show any donuts. We have purposefully deleted the `donut.h` file which was shown during the session while covering ray-donut intersections. 
 
-![spiral.png](/Images/spiral.png "image 2")
-
-This should be a good excercise in understanding how we have setup the virtual camera in our project to get pixel values for every pixels. You will gain intuition about how pixel number relates to the ray being shot towards it from the origin.
-
-What you have to submit:
--  modified `main.cpp` which generates the first of the given two images
-- a new `main1.cpp` which on replacing with main.cpp generates the second of the given two images
-
-Make the required changes and make a pull request to the Assignment_2 branch of the repository.
+- Your FIRST TASK is to rewrite the `donut.h` file and add instances of donuts in the `main.cpp` file. Render the final image, covert to png add it in a folder `renders` in the root directory.
+- Your SECOND TASK is to add one more material class in the `material.h` file. This material will have the property of being able to emit it own light apart from reflecting off and scattering other lights. Take reasonable parameters like `light_intensity` and `light_color` accordingly. Add the material to some of the objects in the scene. Render the image and save it as png in the `renders` folder in the root directory.
 
 Make sure the project builds properly using CMake and you get a valid output.
 
-Submission deadline : 7 June, 11:59 PM
+Submission deadline : 26 June, 11:59 PM
 
 [Link to the GitHub repository :](https://github.com/ishanbawne20/mfcg2023.git)
 
 Resources :
 
-[Understanding Ray Camera interaction(Ch-01)](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+[Ray tracing in one weekend (almost everything is from here)](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
 
 [C++](https://www.w3schools.com/cpp/cpp_oop.asp)
 
 [Cmake Documentation](https://cmake.org/documentation/)
+
+[A short refresher to rendering equation](https://youtu.be/GOfzX7kRwys)
+
+[A short refresher to ray tracing](https://youtu.be/gGKup9tUSrU)
+
+[OOP(if youre still struggling with understanding the project structure)](https://youtu.be/wN0x9eZLix4)
