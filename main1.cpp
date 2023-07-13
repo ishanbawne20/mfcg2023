@@ -1,13 +1,24 @@
-#include "includes\color.h"
-#include "includes\ray.h"
-#include "includes\vec3.h"
+#include "includes/color.h"
+#include "includes/ray.h"
+#include "includes/vec3.h"
 
 #include <iostream>
+
+color spiral_pattern_color(const vec3& point) {
+    auto angle = atan2(point.y(), point.x());
+    auto radius = point.length();
+    auto r = static_cast<int>((angle + radius) * 255 / (2 * 3.14159));
+    auto g = static_cast<int>((radius) * 255);
+    auto b = static_cast<int>((angle - radius) * 255 / (2 * 3.14159));
+    return color(r, g, b) / 255.0;
+}
 
 color ray_color(const ray& r) {
     vec3 unit_direction = unit_vector(r.direction());
     auto t = 0.5*(unit_direction.y() + 1.0);
-    return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
+    auto background = (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
+    auto point = r.at(2.0);
+    return spiral_pattern_color(point);
 }
 
 int main() {
