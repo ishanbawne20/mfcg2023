@@ -1,0 +1,3 @@
+D:/mfcg2023/out/build/x64-Debug/CMakeFiles/mfcg.dir
+D:/mfcg2023/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+D:/mfcg2023/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
