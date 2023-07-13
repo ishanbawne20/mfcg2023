@@ -3,11 +3,14 @@
 #include "vec3.h"
 
 #include <iostream>
+#include<fstream>
 
 color ray_color(const ray& r) {
     vec3 unit_direction = unit_vector(r.direction());
-    auto t = 0.5*(unit_direction.y() + 1.0);
-    return (1.0-t)*color(1.0, 1.0, 1.0) + t*color(0.5, 0.7, 1.0);
+    auto t = -0.001 * (unit_direction.x() * unit_direction.x()) + 100 * (unit_direction.y() * unit_direction.y());
+    t = sqrt(t + 0.001);
+    auto sinc = sin(2 * (t)-1.57) + 1;
+    return  0.5 * (sinc)*color(1.0, 1.0, 1.0);
 }
 
 int main() {
@@ -26,22 +29,24 @@ int main() {
     auto origin = point3(0, 0, 0);
     auto horizontal = vec3(viewport_width, 0, 0);
     auto vertical = vec3(0, viewport_height, 0);
-    auto lower_left_corner = origin - horizontal/2 - vertical/2 - vec3(0, 0, focal_length);
+    auto lower_left_corner = origin - horizontal / 2 - vertical / 2 - vec3(0, 0, focal_length);
 
     // Render
 
-    std::cout << "P3\n" << image_width << " " << image_height << "\n255\n";
+    std::ofstream fout("hyper.ppm");
+    fout << "P3\n" << image_width << " " << image_height << "\n255\n";
 
-    for (int j = image_height-1; j >= 0; --j) {
+    for (int j = image_height - 1; j >= 0; --j) {
         std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
         for (int i = 0; i < image_width; ++i) {
-            auto u = double(i) / (image_width-1);
-            auto v = double(j) / (image_height-1);
-            ray r(origin, lower_left_corner + u*horizontal + v*vertical - origin);
+            auto u = double(i) / (image_width - 1);
+            auto v = double(j) / (image_height - 1);
+            ray r(origin, lower_left_corner + u * horizontal + v * vertical - origin);
             color pixel_color = ray_color(r);
-            write_color(std::cout, pixel_color);
+            write_color(fout, pixel_color);
         }
     }
+    fout.close();
 
     std::cerr << "\nDone.\n";
 }
