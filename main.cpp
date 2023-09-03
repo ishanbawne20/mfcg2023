@@ -1,5 +1,5 @@
 #include "util.h"
-
+#include "donut.h"
 #include "color.h"
 #include "hittable_list.h"
 #include "sphere.h"
@@ -100,7 +100,14 @@ int main() {
     world.add(make_shared<sphere>(point3(-1.0,    0.0, -1.0),   0.5, material_left));
     world.add(make_shared<sphere>(point3(-1.0,    0.0, -1.0), 0.45, material_left));
     world.add(make_shared<sphere>(point3( 1.0,    0.0, -1.0),   0.5, material_right));
+    auto donut_material = std::make_shared<Material>();
 
+    // Create a donut object and add it to your scene
+    Vec3 donut_center(0.0, -0.5, -3.0);  // Adjust the position as needed
+    double major_radius = 1.0;  // Adjust the radii as needed
+    double minor_radius = 0.3;
+    auto donut = std::make_shared<Donut>(donut_center, major_radius, minor_radius, donut_material);
+    world.add(donut);
     // Camera
 
     camera cam(point3(-2,2,1), point3(0,0,-1), vec3(0,1,0), 90, aspect_ratio);
